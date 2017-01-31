@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="personalInfo" class="org.Spring.ConstructorInject.PersonalInfo">
+       <constructor-arg name="name" value="Daniel"/>
+       <constructor-arg name="gender" value="Man"/>
+       <constructor-arg name="birth" value="1980-01-01"/>
+       <constructor-arg name="height" value="180"/>
+       <constructor-arg name="weight" value="80"/>
+   </bean>
+</beans>

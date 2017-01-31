@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="personalInfo" class="org.Spring.SetterInjection.PersonalInfo">
+       <property name="name" value="Daniel"/>
+       <property name="gender" value="Man"/>
+       <property name="birth" value="1980-01-01"/>
+       <property name="height" value="180"/>
+       <property name="weight" value="80"/>
+   </bean>
+</beans>
