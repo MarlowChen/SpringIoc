@@ -1,6 +1,6 @@
 # SpringIoc
 
-#說明
+# 說明
 Spring的依賴注入目的是降低耦合度
 讓Spring去實作物件，不需要new出物件，這也是Spring主要的核心功能。
 
@@ -10,8 +10,8 @@ Spring的注入在常見的教學通常寫得非常複雜，因為注入方式�
 
 這個文件主要是以最簡單、最基礎的方式
 講述Spring的控制反轉與依賴注入。
-***
-#方法
+* * *
+# 方法
 
 Spring的依賴注入依據官方的說明，有三個方法
 但實際上只有兩種，因為接口注入Spring並不支援。
@@ -22,7 +22,7 @@ Spring的依賴注入依據官方的說明，有三個方法
 <li>Constructor Injection : 不需要 Set，透過構造注入</li>
 </ol>
 ***
-#配置
+# 配置
 
 Spring的Ioc基礎需要的檔案如下：
 
@@ -34,8 +34,8 @@ Spring的Ioc基礎需要的檔案如下：
 </ul>
 
 只要使用Spring，就一定會有上述的方式，只是使用上的差異而已。
-***
-#步驟
+* * *
+# 步驟
 
 ![ioc1](images/Untitled Diagram.jpg)
 
@@ -56,20 +56,20 @@ Spring的Ioc基礎需要的檔案如下：
 
 在上述兩種方法的差異，只有在定義Bean.xml與Object不同而已
 其餘方式都可以使用。
-***
+* * *
 這邊使用maven，所以運用pom.xml載入SpringFramework
 範例載入的是個人資料，包含String與int型別
 
-##pom.xml:載入SpringFramework
+## pom.xml:載入SpringFramework
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.3.6.RELEASE</version>
 		</dependency>
-##定義所需要物件(這邊其中一種即可)
+## 定義所需要物件(這邊其中一種即可)
     
-###---Setter(定義物件):運用set方法來注入
-####----用法： 
+### ---Setter(定義物件):運用set方法來注入
+#### ----用法： 
 
       public void setXXX(key){
         //get key instance
@@ -78,7 +78,7 @@ Spring的Ioc基礎需要的檔案如下：
 說明：內容主要是使用Set方式來載入想要的東西，只要將想要的物件透過set方式，參數帶物件，就可以載入
 在Setter中的PersonalInfo.java當中為：
 
-####----實例：
+#### ----實例：
 
 		private String name;
 		
@@ -92,8 +92,8 @@ Spring的Ioc基礎需要的檔案如下：
 說明： 用一個全域變數name，在把name交給Spring帶值傳進去，就可以注入，get則是可以透過這個方法取值
 這裡很重要的是，set方式一定要依照setXXX並且放入需要的物件才會注入。
 
-###---Constructor(定義物件):直接定義建構子
-####----用法： 
+### ---Constructor(定義物件):直接定義建構子
+#### ----用法： 
 
     public Object(key){
       //get key instance
@@ -101,7 +101,7 @@ Spring的Ioc基礎需要的檔案如下：
   
 說明：也就是這裡完全不需要Set方式，直接請Spring完成，使用者可以自定義取得方法。
 
-####----實例：
+#### ----實例：
 
     private String name;
     
@@ -111,12 +111,12 @@ Spring的Ioc基礎需要的檔案如下：
     
 說明：類別名稱為PersonalInfo，所以用這個建構子就可以直接把name注入。
 
-***
+* * *
 
-##定義Bean的xml(對應上面的方法)
+## 定義Bean的xml(對應上面的方法)
 
-###---Setter(定義beans.xml):使用property注入
-####----用法：
+### ---Setter(定義beans.xml):使用property注入
+#### ----用法：
        <bean id="objectID" class="classPackage">
            <property name="key" value="value"/>
        </bean>
@@ -126,7 +126,7 @@ class是這個物件所在的package，property是對應setter的方式，
 name的名稱對應到前面的setXXX，XXX就是name的名稱，
 Spring會從這裡給值到剛set當中的參數作為使用。
 
-####----實例：
+#### ----實例：
 
      <bean id="personalInfo" class="org.Spring.SetterInjection.PersonalInfo">
          <property name="name" value="Daniel"/>
@@ -135,10 +135,10 @@ Spring會從這裡給值到剛set當中的參數作為使用。
 說明：前面setName，所以這邊也使用name(不必區分大小寫)，然後給予值，
 class是這個物件的位置，id是拿取這個物件需要使用的。
 
-***
+* * *
 
-###---Constructor(定義beans.xml):使用constructor-arg注入
-####----用法：
+### ---Constructor(定義beans.xml):使用constructor-arg注入
+#### ----用法：
      <bean id="objectID" class="classPackage">
          <constructor-arg name="key" value="value"/>
      </bean>
@@ -147,7 +147,7 @@ class是這個物件的位置，id是拿取這個物件需要使用的。
 key需要與前面的參數相同，這樣才能將value注入，
 constructor-arg的使用方法很多，這裡示範最基本的用法，另外還有定義型別或者index順序等。
 
-####----實例：
+#### ----實例：
 
      <bean id="personalInfo" class="org.Spring.ConstructorInject.PersonalInfo">
          <constructor-arg name="name" value="Daniel"/>
@@ -156,9 +156,9 @@ constructor-arg的使用方法很多，這裡示範最基本的用法，另外�
 說明：除了本身的名稱外與類別，constructor與setter方式的差別是，不需要set的方式，可以直接將值注入，
 可是還是需要給予參數接收值，參數名稱要一樣。
 
-***
+* * *
 
-##GetBean：
+## GetBean：
 雖然已經將物件注入，但是如果沒有取得的方式就無法拿到物件實體，所以通常會寫一個測試方法
 
       ApplicationContext context = 
@@ -172,15 +172,29 @@ ClassPathXmlApplicationContext後面是beans的路徑，以maven來說必須要�
 這也是常用的測試方式，另外還有file與web的取得方式，但如果熟悉後通常會直接使用Annotation注入，如此一來便可以取得物件。
 
 範例只要運行App就可以，裏面包含了測試方法。
-***
-#比較
-| 注入方式      | Setter Injection | Constructor Injection |
-| ------------- |:----------------:| ---------------------:|
-| 注入用法      | 定義set方法      | 使用建構子注入        |
-| 注入判斷      | Set後的名稱      | 建構子的參數名稱      |
+* * *
+# 比較
+
+<table>
+    <tr>
+        <td>注入方式</td>
+	<td>Setter Injection</td>
+	<td>Constructor Injection</td>
+    </tr>
+    <tr>
+        <td>注入用法</td>
+	<td>定義set方法</td>
+	<td>使用建構子注入</td>
+    </tr>
+    <tr>
+        <td>注入判斷</td>
+	<td>Set後的名稱</td>
+	<td>建構子的參數名稱</td>
+    </tr>    
+</table>
 
 在使用上雖然沒有一定得使用哪個，可是相對的也有一些優缺點，譬如Setter方式雖然較為複雜，但可以直接在物件中就把值設定好，相對的，
 Constructor雖然在物件上較為簡潔，可是卻非常依賴xml內注入值，這樣個有好壞，所以使用上都是可行的。
 ***
-#總結
+# 總結
 花很多時間研究了Spring的控制反轉與依賴注入，事實上是一個很簡單的概念，但是卻不好由程式來說明，其原因是靈活性很高，很難有一套標準，所以我在文件上是以最容易上手的方式，在範例的檔案中並不會有複雜的方式，就只有四個檔案，目的是讓使用者可以更快掌握Spring的Ioc與Di，否則如果要在細說annotation，那勢必又是更深層的講解
