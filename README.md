@@ -37,7 +37,7 @@ Spring的Ioc基礎需要的檔案如下：
 * * *
 # 步驟
 
-![ioc1](images/Untitled Diagram.jpg)
+<img src="images/Untitled Diagram.jpg" >
 
 <ol>
 <li>首先載入Spring相關的jar，讓文件可以使用Spring框架。</li>
@@ -161,10 +161,9 @@ constructor-arg的使用方法很多，這裡示範最基本的用法，另外�
 ## GetBean：
 雖然已經將物件注入，但是如果沒有取得的方式就無法拿到物件實體，所以通常會寫一個測試方法
 
-      ApplicationContext context = 
-                  new ClassPathXmlApplicationContext("Beans.xml");
+      ApplicationContext context =  new ClassPathXmlApplicationContext("Beans.xml");
 
-          PersonalInfo obj = (PersonalInfo) context.getBean("personalInfo");
+      PersonalInfo obj = (PersonalInfo) context.getBean("personalInfo");
     
 說明：測試方法目前有三種，這麼做是要去抓取Beans.xml，並且讓他作用取得物件實體，
 
