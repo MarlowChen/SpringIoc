@@ -21,6 +21,7 @@ Spring的依賴注入依據官方的說明，有三個方法
 <li>Setter Injection : 定義Java文件的一個名為Set的方法，Spring可以判斷並且注入。</li>
 <li>Constructor Injection : 不需要 Set，透過構造注入</li>
 </ol>
+
 ***
 # 配置
 
