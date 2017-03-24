@@ -34,29 +34,28 @@ Spring的Ioc基礎需要的檔案如下：
 </ul>
 
 只要使用Spring，就一定會有上述的方式，只是使用上的差異而已。
+
 * * *
 # 步驟
 
 <img src="images/Untitled Diagram.jpg" >
 
-<ol>
-<li>首先載入Spring相關的jar，讓文件可以使用Spring框架。</li>
-<li>定義需要的物件，並且依據Spring的規則進行操作
-<ul>
-<li>Setter Injection : 在物件中建立Set方法</li>
-<li>Constructor Injection : 在物件中加入建構子並給予變數接收</li>
-</ul></li>
-<li>Object：需要注入的物件，可供Spring編譯成一個物件實體。
-<ul>
-<li>Setter Injection : 使用property注入值</li>
-<li>Constructor Injection : 使用constructor-arg注入值</li>
-</ul></li>
-<li>GetBean：獲取物件實體的方式，一般會寫測試方法。</li>
-</ol>
+	1.首先載入Spring相關的jar，讓文件可以使用Spring框架。
+	
+	2.定義需要的物件，並且依據Spring的規則進行操作
+	     		 	.Setter Injection : 在物件中建立Set方法
+	      			.Constructor Injection : 在物件中加入建構子並給予變數接收
+	    
+	3.載入Object：需要注入的物件，可供Spring編譯成一個物件實體。
+				.Setter Injection : 使用property注入值
+				.Constructor Injection : 使用constructor-arg注入值
+
+	4.GetBean：獲取物件實體的方式，一般會寫測試方法。
 
 在上述兩種方法的差異，只有在定義Bean.xml與Object不同而已
 其餘方式都可以使用。
-* * *
+
+# 解說
 這邊使用maven，所以運用pom.xml載入SpringFramework
 範例載入的是個人資料，包含String與int型別
 
